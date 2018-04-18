@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/brysonstoner/kombucha-backend#readme",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "nodemon": "^1.17.3"
+    "morgan": "^1.9.0",
+    "morgan-body": "^2.4.0",
+    "nodemon": "^1.17.3",
+    "npm": "^5.8.0"
   }
 }

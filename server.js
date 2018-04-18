@@ -27,19 +27,21 @@ client.connect((err) => {
 });
 
 app.post('/submitData', (req, res) => {
-    client.query(`insert into flavors (flavorname) values ('${req.body.flavorname}' returning *`, (err, result) => {
-        if (err) {
-            res.json(err);
-            console.error(err);
-        }
-        var flav = result.rows[0];
-            client.query(`insert into flavors (flavornumber, flavorname) values ('${req.body.flavornumber}', '${req.body.flavorname})`, (err, result) => {
+    console.log(req.body)
+    // client.query(`insert into flavors (flavornumber, flavorname) values ('${req.body.flavornumber}', '${req.body.flavorname}') returning *`, (err, result) => {
+    //     if (err) {
+    //         res.json(err);
+    //         console.error(err);
+    //     }
+    //     console.log(result)
+    //     var flav = result.rows[0];
+            client.query(`insert into flavors (flavornumber, flavorname) values ('${req.body.flavornumber}', '${req.body.flavorname}')`, (err, result) => {
                 if (err) {
                     res.json(err);
                     console.error('error running query', err);
                 } else {
                     res.json('successfullly added flavor');
                 }
-            });
+            // });
         });
     });
