@@ -40,8 +40,32 @@ app.post('/submitData', (req, res) => {
                     res.json(err);
                     console.error('error running query', err);
                 } else {
-                    res.json('successfullly added flavor');
+                    res.json('successfully added flavor');
                 }
             // });
         });
     });
+
+app.post('/getFlavor1', (req, res) => {
+    console.log(req.body)
+        client.query(`select flavorname from flavors where flavornumber = '1'`, (err, result) => {
+            if (err) {
+                res.json(err);
+                console.error('error finding flavors', err);
+            } else {
+                res.json('successfully pulled flavor 1');
+            }
+        })
+})
+
+app.post('/getFlavor2', (req, res) => {
+    console.log(req.body)
+        client.query(`select flavorname from flavors where flavornumber = '2'`, (err, result) => {
+            if (err) {
+                res.json(err);
+                console.error('error finding flavors', err);
+            } else {
+                res.json('successfully pulled flavor 2');
+            }
+        })
+})
