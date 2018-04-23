@@ -45,15 +45,16 @@ app.post('/submitData', (req, res) => {
             // });
         });
     });
-
-app.post('/getFlavor1', (req, res) => {
-    console.log(req.body)
+//route handler
+app.post('/getFlavor1', (req, res) => {  //request, response
+    // console.log(req.body)
         client.query(`select flavorname from flavors where flavornumber = '1'`, (err, result) => {
             if (err) {
                 res.json(err);
                 console.error('error finding flavors', err);
             } else {
-                res.json('successfully pulled flavor 1');
+                res.json(result.rows);
+                console.log(result.rows);
             }
         })
 })
@@ -65,7 +66,8 @@ app.post('/getFlavor2', (req, res) => {
                 res.json(err);
                 console.error('error finding flavors', err);
             } else {
-                res.json('successfully pulled flavor 2');
+                res.json(result.rows);
+                console.log(result.rows);
             }
         })
 })
