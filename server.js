@@ -48,26 +48,34 @@ app.post('/submitData', (req, res) => {
 //route handler
 app.post('/getFlavor1', (req, res) => {  //request, response
     // console.log(req.body)
-        client.query(`select flavorname from flavors where flavornumber = '1'`, (err, result) => {
+        client.query(`select flavorname from flavors where flavornumber = '1';`, (err, result) => {
             if (err) {
                 res.json(err);
                 console.error('error finding flavors', err);
             } else {
-                res.json(result.rows);
-                console.log(result.rows);
+                processedFlavor1 = result.rows.map((flavor)=>{
+                    console.log(flavor);
+                    return (flavor.flavorname);
+                });
+                // console.log(processedFlavor1[0]);
+                res.json(processedFlavor1);
             }
         })
 })
 
 app.post('/getFlavor2', (req, res) => {
     console.log(req.body)
-        client.query(`select flavorname from flavors where flavornumber = '2'`, (err, result) => {
+        client.query(`select flavorname from flavors where flavornumber = '2';`, (err, result) => {
             if (err) {
                 res.json(err);
                 console.error('error finding flavors', err);
             } else {
-                res.json(result.rows);
-                console.log(result.rows);
+                processedFlavor2 = result.rows.map((flavor)=>{
+                    return (flavor.flavorname);
+                });
+                res.json(processedFlavor2);
+                // res.json(result.rows);
+                // console.log(result.rows);
             }
         })
 })
